@@ -1,0 +1,9 @@
+server:
+  port: 41001
+eureka:
+  client:
+    # 消费者没必要注册到Eureka，仅读取就可以啦
+    register-with-eureka: false
+    service-url:
+      # defaultZone: http://localhost:42001/eureka/
+      defaultZone: http://e1.com:42001/eureka/,http://e2.com:42002/eureka/,http://e3.com:42003/eureka/

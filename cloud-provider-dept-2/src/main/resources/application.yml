@@ -1,0 +1,27 @@
+server:
+  port: 40002
+
+spring:
+  application:
+    name: eureka-client
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver              # mysql驱动包
+    url: jdbc:mysql://192.168.105.130:3306/cloudDB02          # 数据库名称
+    username: root
+    password: Gzxu@2012
+    dbcp2:
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      initial-size: 5                                       # 初始化连接数
+      max-total: 5                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      #      defaultZone: http://localhost:42001/eureka/
+      defaultZone: http://e1.com:42001/eureka/,http://e2.com:42002/eureka/,http://e3.com:42003/eureka/
+  instance:
+     instance-id: cloud-dept40002 #感觉没有必要修改
+     prefer-ip-address: true     #访问路径可以显示IP地址

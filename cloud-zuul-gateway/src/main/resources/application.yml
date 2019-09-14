@@ -1,0 +1,22 @@
+server:
+  port: 42005
+
+spring:
+  application:
+    name: mcloud-zuul-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://e1.com:42001/eureka/,http://e2.com:42002/eureka/,http://e3.com:42003/eureka/
+  instance:
+    instance-id: gateway.com
+    prefer-ip-address: true
+
+# http://localhost:42005/x/mydept/dept/get/1
+zuul:
+  prefix: /x #统一前缀
+  ignored-services: eureka-client #单个具体，多个可以用"*"
+  routes:
+    mydept.serviceId: eureka-client #通过此id来做网关
+    mydept.path: /mydept/**
